@@ -480,3 +480,8 @@ LANGUAGE:
 }
 
 startServer();
+  // Official app-ads.txt Route for AdMob Verification
+  app.get('/app-ads.txt', (req, res) => {
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.send('google.com, pub-5550587346044700, DIRECT, f08c47fec0942fa0\n');
+  });
