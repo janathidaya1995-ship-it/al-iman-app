@@ -458,13 +458,21 @@ LANGUAGE:
       }
     }
   });
+  // Official app-ads.txt Route for AdMob Verification
+  app.get('/app-ads.txt', (req, res) => {
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.send('google.com, pub-5550587346044700, DIRECT, f08c47fec0942fa0\n');
+  });
 
   // Vite middleware in dev or static files in production
   if (!IS_PROD) {
+  
+
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',
     });
+    
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), 'dist');
@@ -480,8 +488,5 @@ LANGUAGE:
 }
 
 startServer();
-  // Official app-ads.txt Route for AdMob Verification
-  app.get('/app-ads.txt', (req, res) => {
-    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    res.send('google.com, pub-5550587346044700, DIRECT, f08c47fec0942fa0\n');
-  });
+  
+  
